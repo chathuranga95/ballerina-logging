@@ -1,0 +1,58 @@
+{
+    "time": "2024-01-17T19:37:55.472+05:30",
+    "level": "ERROR",
+    "module": "main",
+    "message": "Error occurred while saving data",
+    "error": {
+        "causes": [
+            {
+                "message": "SQL error occured.",
+                "detail": {
+                    "code": 100
+                },
+                "stackTrace": [
+                    {
+                        "callableName": "saveToDatabase",
+                        "moduleName": "chathurangas.ballerina_logging.persistent.0",
+                        "fileName": "persistent-impl.bal",
+                        "lineNumber": 6
+                    },
+                    {
+                        "callableName": "saveOnDisk",
+                        "moduleName": "chathurangas.ballerina_logging.persistent.0",
+                        "fileName": "persistent.bal",
+                        "lineNumber": 3
+                    },
+                    {
+                        "callableName": "main",
+                        "moduleName": "chathurangas.ballerina_logging.0",
+                        "fileName": "main.bal",
+                        "lineNumber": 15
+                    }
+                ]
+            }
+        ],
+        "message": "Persistent error occurred. Key is not supported.",
+        "detail": {
+            "key": "error"
+        },
+        "stackTrace": [
+            {
+                "callableName": "saveOnDisk",
+                "moduleName": "chathurangas.ballerina_logging.persistent.0",
+                "fileName": "persistent.bal",
+                "lineNumber": 5
+            },
+            {
+                "callableName": "main",
+                "moduleName": "chathurangas.ballerina_logging.0",
+                "fileName": "main.bal",
+                "lineNumber": 15
+            }
+        ]
+    },
+    "orgId": "org-001234",
+    "mood": {
+        "happy": "much"
+    }
+}

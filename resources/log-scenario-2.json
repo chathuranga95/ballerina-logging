@@ -1,0 +1,37 @@
+{
+    "time": "2024-01-17T19:48:42.838+05:30",
+    "level": "ERROR",
+    "module": "main",
+    "message": "Error occurred while reading data",
+    "error": {
+        "causes": [],
+        "message": "SQL error while connecting to the database",
+        "detail": {
+            "code": 101
+        },
+        "stackTrace": [
+            {
+                "callableName": "getFromDatabase",
+                "moduleName": "chathurangas.ballerina_logging.persistent.0",
+                "fileName": "persistent-impl.bal",
+                "lineNumber": 2
+            },
+            {
+                "callableName": "getFromDisk",
+                "moduleName": "chathurangas.ballerina_logging.persistent.0",
+                "fileName": "persistent.bal",
+                "lineNumber": 18
+            },
+            {
+                "callableName": "main",
+                "moduleName": "chathurangas.ballerina_logging.0",
+                "fileName": "main.bal",
+                "lineNumber": 24
+            }
+        ]
+    },
+    "orgId": "org-001234",
+    "mood": {
+        "happy": "much"
+    }
+}

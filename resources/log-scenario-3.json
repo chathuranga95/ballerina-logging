@@ -1,0 +1,30 @@
+{
+    "time": "2024-01-17T20:10:01.367+05:30",
+    "level": "ERROR",
+    "module": "main",
+    "message": "Error occurred while greeting",
+    "error": {
+        "causes": [],
+        "message": "can't say hello to unspeakable",
+        "detail": {},
+        "stackTrace": [
+            {
+                "callableName": "sayHello",
+                "moduleName": "chathurangas.ballerina_logging.hello.0",
+                "fileName": "hello.bal",
+                "lineNumber": 3
+            },
+            {
+                "callableName": "main",
+                "moduleName": "chathurangas.ballerina_logging.0",
+                "fileName": "main.bal",
+                "lineNumber": 36
+            }
+        ]
+    },
+    "customKey": "customValue",
+    "orgId": "org-001234",
+    "mood": {
+        "happy": "much"
+    }
+}
