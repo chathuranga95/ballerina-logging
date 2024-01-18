@@ -7,10 +7,11 @@ import ballerina/log;
 # + keyValues - Key value pairs to be logged.
 public isolated function logDebug(Context ctx, string message, log:KeyValues keyValues = {}) {
     string[] keys = ctx.keys();
+    log:KeyValues keyValuesWithContext = keyValues.clone();
     foreach string key in keys {
-        keyValues[key] = <anydata>ctx.get(key);
+        keyValuesWithContext[key] = <anydata>ctx.get(key);
     }
-    log:printDebug(message, keyValues = keyValues);
+    log:printDebug(message, keyValues = keyValuesWithContext);
 }
 
 # Logs an informational message with the given message and module name.
@@ -23,10 +24,11 @@ public isolated function logDebug(Context ctx, string message, log:KeyValues key
 # + keyValues - Key value pairs to be logged.
 public isolated function logInfo(Context ctx, string message, log:KeyValues keyValues = {}) {
     string[] keys = ctx.keys();
+    log:KeyValues keyValuesWithContext = keyValues.clone();
     foreach string key in keys {
-        keyValues[key] = <anydata>ctx.get(key);
+        keyValuesWithContext[key] = <anydata>ctx.get(key);
     }
-    log:printInfo(message, keyValues = keyValues);
+    log:printInfo(message, keyValues = keyValuesWithContext);
 }
 
 # Function to log the error messages
@@ -37,10 +39,11 @@ public isolated function logInfo(Context ctx, string message, log:KeyValues keyV
 # + keyValues - Key value pairs to be logged.
 public isolated function logError(Context ctx, string message, error err, log:KeyValues keyValues = {}) {
     string[] keys = ctx.keys();
+    log:KeyValues keyValuesWithContext = keyValues.clone();
     foreach string key in keys {
-        keyValues[key] = <anydata>ctx.get(key);
+        keyValuesWithContext[key] = <anydata>ctx.get(key);
     }
-    log:printError(message, err, keyValues = keyValues);
+    log:printError(message, err, keyValues = keyValuesWithContext);
 
 }
 
@@ -52,8 +55,9 @@ public isolated function logError(Context ctx, string message, error err, log:Ke
 # + keyValues - Key value pairs to be logged.
 public isolated function logWarn(Context ctx, string message, error? err, log:KeyValues keyValues = {}) {
     string[] keys = ctx.keys();
+    log:KeyValues keyValuesWithContext = keyValues.clone();
     foreach string key in keys {
-        keyValues[key] = <anydata>ctx.get(key);
+        keyValuesWithContext[key] = <anydata>ctx.get(key);
     }
-    log:printWarn(message, err, keyValues = keyValues);
+    log:printWarn(message, err, keyValues = keyValuesWithContext);
 }
