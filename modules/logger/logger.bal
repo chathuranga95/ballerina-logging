@@ -1,17 +1,21 @@
 import ballerina/log;
 
+isolated function getKeyValuesWithContext(Context ctx, log:KeyValues keyValues) returns log:KeyValues {
+    string[] keys = ctx.keys();
+    log:KeyValues keyValuesWithContext = keyValues.clone();
+    foreach string key in keys {
+        keyValuesWithContext[key] = <anydata>ctx.get(key);
+    }
+    return keyValuesWithContext;
+}
+
 # Logs a debug message with the given message and module name.
 #
 # + ctx - The HTTP request context.
 # + message - The message to be logged.
 # + keyValues - Key value pairs to be logged.
 public isolated function logDebug(Context ctx, string message, log:KeyValues keyValues = {}) {
-    string[] keys = ctx.keys();
-    log:KeyValues keyValuesWithContext = keyValues.clone();
-    foreach string key in keys {
-        keyValuesWithContext[key] = <anydata>ctx.get(key);
-    }
-    log:printDebug(message, keyValues = keyValuesWithContext);
+    log:printDebug(message, keyValues = getKeyValuesWithContext(ctx, keyValues));
 }
 
 # Logs an informational message with the given message and module name.
@@ -23,12 +27,7 @@ public isolated function logDebug(Context ctx, string message, log:KeyValues key
 # + message - The message to be logged.
 # + keyValues - Key value pairs to be logged.
 public isolated function logInfo(Context ctx, string message, log:KeyValues keyValues = {}) {
-    string[] keys = ctx.keys();
-    log:KeyValues keyValuesWithContext = keyValues.clone();
-    foreach string key in keys {
-        keyValuesWithContext[key] = <anydata>ctx.get(key);
-    }
-    log:printInfo(message, keyValues = keyValuesWithContext);
+    log:printInfo(message, keyValues = getKeyValuesWithContext(ctx, keyValues));
 }
 
 # Function to log the error messages
@@ -38,13 +37,7 @@ public isolated function logInfo(Context ctx, string message, log:KeyValues keyV
 # + err - error object
 # + keyValues - Key value pairs to be logged.
 public isolated function logError(Context ctx, string message, error err, log:KeyValues keyValues = {}) {
-    string[] keys = ctx.keys();
-    log:KeyValues keyValuesWithContext = keyValues.clone();
-    foreach string key in keys {
-        keyValuesWithContext[key] = <anydata>ctx.get(key);
-    }
-    log:printError(message, err, keyValues = keyValuesWithContext);
-
+    log:printError(message, keyValues = getKeyValuesWithContext(ctx, keyValues));
 }
 
 # Function to log the warning messages
@@ -54,10 +47,5 @@ public isolated function logError(Context ctx, string message, error err, log:Ke
 # + err - error object if any
 # + keyValues - Key value pairs to be logged.
 public isolated function logWarn(Context ctx, string message, error? err, log:KeyValues keyValues = {}) {
-    string[] keys = ctx.keys();
-    log:KeyValues keyValuesWithContext = keyValues.clone();
-    foreach string key in keys {
-        keyValuesWithContext[key] = <anydata>ctx.get(key);
-    }
-    log:printWarn(message, err, keyValues = keyValuesWithContext);
+    log:printWarn(message, keyValues = getKeyValuesWithContext(ctx, keyValues));
 }
